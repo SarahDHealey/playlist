@@ -1,0 +1,205 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+@font-face {
+  font-family: 'Avenir', sans-serif;
+  src:
+  local('Avenir'),
+  url('/fonts/AvenirNextLTPro-Regular.otf')
+  format('opentype');
+}
+
+p {
+  font-size: 3.2em;
+  color: indigo;
+  margin: 0em;
+  font-family: "Avenir", sans-serif;
+  font-weight: 100;
+  display: inline-block;
+}
+
+h5 {
+  font-size: 1em;
+  color: white;
+  margin: 0em;
+  font-family: "Avenir", sans-serif;
+  font-weight: 100;
+  display: inline-block;
+}
+h1 {
+  color: white;
+  font-size: 2.5em;
+  margin: 0em;
+  font-family: "Avenir", sans-serif;
+  font-weight: 100;
+  display: inline-block;
+}
+h3 {
+  font-size: 1em;
+  color: indigo;
+  margin: 0em;
+  font-family: "Avenir", sans-serif;
+  font-weight: 100;
+  display: inline-block;
+}
+
+#smHeader {
+  width: 100vw;
+  height: 5vh;
+  background-color: #8A897A;
+  border-bottom: solid black;
+  border-width: 1px;
+  margin: 0;
+}
+#lrgHeader {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 18vh;
+  padding-top: 11vh;
+  padding-left: 5vw;
+  background-color: #8A897A;
+  vertical-align: text-bottom;
+  border-bottom: solid black;
+  border-width: 1px;
+  margin: 0;
+}
+
+
+#mainCenter {
+  display: block;
+  vertical-align: top;
+  height: 77vh;
+  margin: 0 auto;
+}
+
+#mainTopScrolling {
+    width: 100vw;
+    height: 15vh;
+    margin-bottom: 4vh;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.mini {
+  width: 7vw;
+  margin-left: 1vw;
+}
+
+#bin {
+  margin: 0 auto;
+  border: solid black;
+  padding-top: 1em;
+  padding-left: 1em;
+  background-color: #EAEAEA;
+  width: 70vw;
+  height: 30vh;
+}
+
+#containerDivLeft {
+  box-sizing: border-box;
+  width: 50vw;
+  padding: 16em 16em;
+  height: 90vh;
+  background-color: #EAEAEA;
+  float: left;
+  display: inline-block;
+  margin: 0;
+}
+#innerLeft {
+  width: 30vw;
+  margin: 0 auto;
+  display: inline-block;
+  float: left;
+  box-sizing: border-box;
+}
+button {
+  border-radius: .5em;
+  width: 8em;
+  height: 2em;
+  background-color: #28281D;
+  color: white;
+  font-size: 24px;
+  font-family: "Avenir", sans-serif;
+  padding: 0em;
+  display: inline-block;
+}
+
+#buttonContainer {
+  margin: 0 auto;
+  padding: 2vh;
+  width: 70vw;
+  height: 30vh;
+}
+
+#containerDivRight {
+  box-sizing: border-box;
+  vertical-align: top;
+  width: 50vw;
+  height: 90vh;
+  display: inline-block;
+  position: relative;
+}
+
+#main {
+  content: "";
+  background: url(resources/track.jpg);
+  opacity: .19;
+  position: absolute;
+  z-index: -1;
+  vertical-align: top;
+  float: right;
+  width: 50vw;
+  height: 90vh;
+  margin: 0;
+}
+
+#track1 {
+  width: 32.5%;
+  padding-bottom: 32.5%;
+  position: absolute;
+  margin-top: 1%;
+  margin-left: 34%;
+  z-index: 0;
+}
+#track2 {
+  width: 32.5%;
+  padding-bottom: 32.5%;
+  position: absolute;
+  top: 33%;
+  margin-top: 1%;
+  margin-left: 34%;
+  z-index: 0;
+}
+#track3 {
+  width: 32.5%;
+  padding-bottom: 32.5%;
+  position: absolute;
+  top: 66%;
+  margin-top: 1%;
+  margin-left: 34%;
+  z-index: 0;
+}
+#footer {
+  width: 100vw;
+  height: 5vh;
+  background-color: #8A897A;
+  float: left;
+  clear: both;
+}
+#footerDiv {
+  padding-top: .1em;
+  padding-left: 2em;
+  color: white;
+  font-family: "Avenir", sans-serif;
+  font-size: 1.7em;
+  font-weight: lighter;
+}
