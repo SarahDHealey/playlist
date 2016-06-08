@@ -1,56 +1,41 @@
+$(document).ready(function(){
+    $.get("https://lit-fortress-6467.herokuapp.com/object", function(data){
 
+///////////link to playlist page//////////
+      $("#chooseTracks").click(function () {
+            window.location.href = "playlist.html";
+        });
 
+///////////appending random images to the homepage///
 
+        newArray = [];
+        for (i=0; i<data.results.length; i++) {
+            newArray.push(data.results[i].cover_art);
+            shuffle(newArray);
+        }
+        for (ind=0; ind<newArray.length; ind++) {
+            var stuff1 = "images";
+            var stuff2 = stuff1 + '/'+newArray[ind];
+            ($("<img>").attr({src: stuff2, id: "track"+ind})).appendTo('#containerDivRight');
+        }
 
-    $(document).ready(function(){
-        $.get("https://lit-fortress-6467.herokuapp.com/object", function(data){
+///////////function shuffle(array)///////////
 
-
-for (var i=0; i<data.results.length; i++) {
-
-  var stuff1 = "images";
-  var random = data.results[Math.floor(Math.random()*data.results.length)];
-
-  var stuff2 = stuff1 + '/'+ random.cover_art;
-
-$("<img>").attr({src: stuff2, id: "track"+i}).appendTo('#containerDivRight');
+function shuffle(array) {
+   var currentIndex = array.length, temporaryValue, randomIndex;
+   // While there remain elements to shuffle...
+   while (0 !== currentIndex) {
+     // Pick a remaining element...
+       randomIndex = Math.floor(Math.random() * currentIndex);
+       currentIndex -= 1;
+       // And swap it with the current element.
+       temporaryValue = array[currentIndex];
+       array[currentIndex] = array[randomIndex];
+       array[randomIndex] = temporaryValue;
+   }
+   return array;
 }
 
+
 });
 });
-
-
-
-
-    $("#chooseTracks").click(function () {
-          window.location.href = "playlist.html";
-      });
-
-
-          // $(stuff2).prependTo($("#containerDivRight"));
-          //
-          //   $('<div>', {id:"X"+i } ).appendTo('#containerDivRight');
-
-      //how to setup multiple attributes at once
-      // $( "#greatphoto" ).attr({
-      //   alt: "Beijing Brush Seller",
-      //   title: "photo by Kelly Clark"
-      // });
-
-
-      // for (var i=0; i<6; i++){
-      // $('<div>', {id:"X"+i src: "images+ '/'+data.results[i].cover_art"}).appendTo('body');
-      // }
-
-      // for (var i=0; i<data.results.length; i++) {
-      //
-      //
-      // }
-      // $('div.mynav').append("<div id='mine'>"+mouse+"</div>");
-      // $("#containerDivRight").append("<img>");
-      // var cover = $(data.results[i].cover_art);
-      // console.log(cover);
-
-       // $("#containerDivRight").prepend($cover);
-
-       // $(data.results[i].cover_art)
