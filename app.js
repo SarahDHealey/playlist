@@ -13,7 +13,7 @@ $(document).ready(function(){
             newArray.push(data.results[i].cover_art);
             shuffle(newArray);
         }
-        for (ind=0; ind<newArray.length; ind++) {
+        for (ind=0; ind<3; ind++) {
             var stuff1 = "images";
             var stuff2 = stuff1 + '/'+newArray[ind];
             ($("<img>").attr({src: stuff2, id: "track"+ind})).appendTo('#containerDivRight');
