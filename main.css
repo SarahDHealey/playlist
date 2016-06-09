@@ -10,6 +10,10 @@ body {
   padding: 0px;
 }
 
+li {
+  list-style-type: none;
+}
+
 @font-face {
   font-family: 'Avenir', sans-serif;
   src:
@@ -82,16 +86,17 @@ h3 {
 }
 
 #mainTopScrolling {
-    width: 100vw;
-    height: 15vh;
+    width: 40vw;
+    height: 18vh;
+    margin: 0 auto;
     margin-bottom: 4vh;
-    overflow-x: scroll;
+    overflow: auto;
     white-space: nowrap;
 }
 
 .mini {
-  width: 7vw;
-  margin-left: 1vw;
+  width: 10vw;
+  margin-left: 2vw;
 }
 
 #bin {
