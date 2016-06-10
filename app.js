@@ -1,87 +1,57 @@
-$(document).ready(function(){
-    $.get("https://lit-fortress-6467.herokuapp.com/object", function(data){
 
-///////////chooseTracks & clear buttons - events//////////
-        $("#chooseTracks").click(function () {
-            window.location.href = "playlist.html";
-        });
+function readyFn() {
+//so I start with one empty array for the data I get
+//and one for the final info I need
+    var images = [];
+    var randArray = [];
 
-        $('#clear').click(function(){
-            $('#bin').html("");
-        });
+//ajax call
+    $.ajax({url:"https://lit-fortress-6467.herokuapp.com/object", success: function(data) {
 
-///////////appending random images to the homepage///
+//find the data I need, the array
+//and push it into my images array
+//images becomes an array of all album cover img names
+      for (var i = 0; i < data.results.length; i++) {
+      images.push(data.results[i].cover_art);
+      }
+//now for the fun...
+//while your randArray, currently empty, has less than 3 items,
+//pull a new random item from your images array
+      while(randArray.length<3) {
+      var newFilter = images[Math.floor((Math.random()*images.length))];
 
-        var shuffled = [];
-        for (i=0; i<data.results.length; i++) {
-            shuffled.push(data.results[i].cover_art);
-            shuffle(shuffled);
-        }
-        for (ind=0; ind<3; ind++) {
-            var stuff1 = "images";
-            var stuff2 = stuff1 + '/'+shuffled[ind];
-            ($("<img>").attr({src: stuff2, id: "track"+ind})).appendTo('#containerDivRight');
-        }
+//If not already in your randArray, then go ahead and push it
+      if ((randArray.indexOf(newFilter)) === -1) {
+      randArray.push(newFilter);
+//In this same loop, one at a time, also...
+//create an img tag
+//set the src attribute
+//and append it to the div
+      imageLocation = 'images/' +newFilter;
+      $("<img>").attr({
+        src: imageLocation}).appendTo($("#column"));
+      }
+    }
 
-        var newArray = [];
-        for (i=0; i<data.results.length; i++) {
-            newArray.push(data.results[i].cover_art);
-        }
+//and that's when I realize I maybe should have created an
+//object where the id is the id and the value is the img
+//I probably still can if I do...
 
-///////////loading the minis to the playlist page///
 
-        for (ind=0; ind<data.results.length; ind++) {
-            var mini1 = "images";
-            var mini2 = mini1 + '/'+newArray[ind];
-            ($("<img>").attr({class: "mini", src: mini2, id: data.results[ind].id})).appendTo('#mainTopScrolling');
-            document.getElementById(data.results[ind].id).addEventListener('click', nameTitleList);
-        }
+for (var ind = 0; ind < data.results.length; ind++) {
+var myObj = {};
+myObj[data.results[ind].id] = data.results[ind].cover_art;
+console.log(myObj);
+/////something to come back to tomorrow;
+//notes to self:
+//redo the above so that you are working with this object, not an array
+//right now you cannot access the corresponding id with the images
+//without doing a whole lot of tomfoolery.
+//If you redo it with the object, it should be much easier. 
 
-        function nameTitleList(e) {
-          var bin = document.getElementById('bin').innerHTML;
-          var selectedId = e.currentTarget.id;
-          for (var i = 0; i < data.results.length; i++) {
-              if (selectedId == data.results[i].id) {
-                    bin += "   <li>"+ data.results[i].artist+ ": " + data.results[i].title+"</li>";
-                    document.getElementById('bin').innerHTML = bin;
-              }
-          }
-        }
 
-///////////function shuffle(array)///////////
+}
+}});
+}
 
-        function shuffle(array) {
-           var currentIndex = array.length, temporaryValue, randomIndex;
-           // While there remain elements to shuffle...
-           while (0 !== currentIndex) {
-             // Pick a remaining element...
-               randomIndex = Math.floor(Math.random() * currentIndex);
-               currentIndex -= 1;
-               // And swap it with the current element.
-               temporaryValue = array[currentIndex];
-               array[currentIndex] = array[randomIndex];
-               array[randomIndex] = temporaryValue;
-           }
-           return array;
-        }
-
-///////////ajax post///////
-
-        $('#send').click(function(e){
-            $.ajax({
-                url: 'https://lit-fortress-6467.herokuapp.com/post',
-                method: 'post',
-                // data: $(this).serialize(),
-                success: function( data, textStatus, jQxhr ){
-                    console.log(data);
-                    console.log(textStatus);
-                    console.log(jQxhr);
-                },
-                error: function( jqXhr, textStatus, errorThrown ){
-                    console.log( errorThrown );
-                }
-        });
-        e.preventDefault();
-        });
-});
-});
+$(document).ready(readyFn);
